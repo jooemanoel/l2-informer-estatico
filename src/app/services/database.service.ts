@@ -10,7 +10,8 @@ import { Skill } from '../shared/models/interfaces/skill';
   providedIn: 'root',
 })
 export class DatabaseService {
-  api = 'http://localhost:8080';
+  // api = 'http://localhost:8080';
+  api = 'https://7275-2804-14c-65f3-8acb-56fe-c55d-de38-78f.ngrok-free.app';
   npcList: Npc[] = [];
   itemList: Item[] = [];
   dropList: Droplist[] = [];
