@@ -1,0 +1,25 @@
+<mat-tab-group>
+  <mat-tab label="NPC">
+    <app-lista-npc
+      *ngIf="page === 'lista-npc'"
+      (pageChange)="changePage($event)"
+    ></app-lista-npc>
+    <app-info-npc
+      *ngIf="page === 'info-npc'"
+      (pageChange)="changePage($event)"
+    ></app-info-npc>
+  </mat-tab>
+  <mat-tab label="ITEM">
+    <app-lista-item></app-lista-item>
+  </mat-tab>
+  <mat-tab label="SKILL">
+    <app-lista-skill
+      *ngIf="page3 === 'lista-skill'"
+      (pageChange)="changePage3($event)"
+    ></app-lista-skill>
+    <app-info-skill
+      *ngIf="page3 === 'info-skill'"
+      (pageChange)="changePage3($event)"
+    ></app-info-skill>
+  </mat-tab>
+</mat-tab-group>

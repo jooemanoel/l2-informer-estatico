@@ -1,0 +1,32 @@
+<div class="row m-0 g-3">
+  <div class="col-12">
+    <mat-card>
+      <mat-card-content class="d-flex justify-content-between">
+        <mat-card-title>{{ npc.name }}</mat-card-title>
+        <button mat-raised-button (click)="changePage('lista-npc')">
+          BACK
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div class="row m-0 g-3">
+  <div class="col-12">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title> NPC Info </mat-panel-title>
+          <!-- <mat-panel-description> NPC Information </mat-panel-description> -->
+        </mat-expansion-panel-header>
+        <div class="row">
+          <div class="col-3 mb-3" *ngFor="let field of npcFields">
+            <div>{{ field.label }}</div>
+            <div class="fw-bold">{{ field.value }}</div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+<app-droplist></app-droplist>
+<app-lista-npc-skill></app-lista-npc-skill>
