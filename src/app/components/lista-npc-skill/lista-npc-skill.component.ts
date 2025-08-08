@@ -11,7 +11,7 @@ import { Skill } from 'src/app/shared/models/interfaces/skill';
   styleUrls: ['./lista-npc-skill.component.css'],
 })
 export class ListaNpcSkillComponent implements OnInit, AfterViewInit {
-  colunas: string[] = ['id', 'level', 'name', 'delete'];
+  colunas: string[] = ['id', 'name', 'level', 'delete'];
   dataSource = new MatTableDataSource<Skill>([]);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

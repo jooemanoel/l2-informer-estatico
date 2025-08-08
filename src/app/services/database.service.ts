@@ -10,13 +10,13 @@ import { Skill } from '../shared/models/interfaces/skill';
   providedIn: 'root',
 })
 export class DatabaseService {
-  // api = 'http://localhost:8080';
-  api = 'https://7275-2804-14c-65f3-8acb-56fe-c55d-de38-78f.ngrok-free.app';
+  api = 'http://localhost:8080';
   npcList: Npc[] = [];
   itemList: Item[] = [];
   dropList: Droplist[] = [];
   skillList: Skill[] = [];
   npc!: Npc;
+  item!: Item;
   skill: Skill[] = [];
   constructor(private http: HttpClient) {
     this.listarNpc().subscribe((res) => (this.npcList = res));
@@ -54,6 +54,9 @@ export class DatabaseService {
   }
   listarDropPorNpc(id: number): Observable<Droplist[]> {
     return this.http.get<Droplist[]>(`${this.api}/droplist/npc/${id}`);
+  }
+  listarDropPorItem(id: number): Observable<Droplist[]> {
+    return this.http.get<Droplist[]>(`${this.api}/droplist/item/${id}`);
   }
   excluirDroplist(droplist: Droplist) {
     return this.http.delete(

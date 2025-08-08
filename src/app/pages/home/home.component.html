@@ -10,7 +10,14 @@
     ></app-info-npc>
   </mat-tab>
   <mat-tab label="ITEM">
-    <app-lista-item></app-lista-item>
+    <app-lista-item
+      *ngIf="page2 === 'lista-item'"
+      (pageChange)="changePage2($event)"
+    ></app-lista-item>
+    <app-info-item
+      *ngIf="page2 === 'info-item'"
+      (pageChange)="changePage2($event)"
+    ></app-info-item>
   </mat-tab>
   <mat-tab label="SKILL">
     <app-lista-skill

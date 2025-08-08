@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,6 +17,7 @@ import { Droplist } from 'src/app/shared/models/interfaces/droplist';
   styleUrls: ['./droplist.component.css'],
 })
 export class DroplistComponent implements OnInit, AfterViewInit {
+  @Input() filtro = 'npc';
   colunas: string[] = [
     'mobName',
     'itemName',
@@ -24,13 +31,20 @@ export class DroplistComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private service: DatabaseService) {}
   ngOnInit(): void {
-    if (!this.service.npc) return;
     this.carregarDroplist();
   }
   carregarDroplist() {
-    this.service
-      .listarDropPorNpc(this.service.npc.id)
-      .subscribe((res) => (this.dataSource.data = res));
+    if (this.filtro === 'npc') {
+      if (!this.service.npc) return;
+      this.service
+        .listarDropPorNpc(this.service.npc.id)
+        .subscribe((res) => (this.dataSource.data = res));
+    } else {
+      if (!this.service.item) return;
+      this.service
+        .listarDropPorItem(this.service.item.id)
+        .subscribe((res) => (this.dataSource.data = res));
+    }
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;

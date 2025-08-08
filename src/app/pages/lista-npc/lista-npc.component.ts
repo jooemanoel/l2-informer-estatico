@@ -18,13 +18,17 @@ import { Npc } from 'src/app/shared/models/interfaces/npc';
   styleUrls: ['./lista-npc.component.css'],
 })
 export class ListaNpcComponent implements OnInit, AfterViewInit {
-  colunas: string[] = ['id', 'name', 'chevron'];
+  colunas: string[] = ['id', 'name', 'level', 'type', 'chevron'];
+  types: string[] = [];
   dataSource = new MatTableDataSource<Npc>([]);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private service: DatabaseService) {}
   ngOnInit(): void {
-    this.service.listarNpc().subscribe((res) => (this.dataSource.data = res));
+    this.service.listarNpc().subscribe((res) => {
+      this.dataSource.data = res;
+      this.types = Array.from(new Set(res.map((npc) => npc.type ?? '')));
+    });
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -33,6 +37,9 @@ export class ListaNpcComponent implements OnInit, AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  apllyTypeFilter(event: string) {
+    this.dataSource.filter = event.trim().toLowerCase();
   }
   select(element: Npc) {
     this.service.consultarNpc(element.id).subscribe((res) => {

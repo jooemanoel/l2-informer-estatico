@@ -18,7 +18,7 @@ import { Item } from 'src/app/shared/models/interfaces/item';
   styleUrls: ['./lista-item.component.css'],
 })
 export class ListaItemComponent implements OnInit, AfterViewInit {
-  colunas: string[] = ['id', 'name', 'addName'];
+  colunas: string[] = ['id', 'name', 'addName', 'chevron'];
   dataSource = new MatTableDataSource<Item>([]);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -33,6 +33,10 @@ export class ListaItemComponent implements OnInit, AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  select(element: Item) {
+    this.service.item = element;
+    this.changePage('info-item');
   }
   @Output() pageChange = new EventEmitter<string>();
   changePage(page: string) {

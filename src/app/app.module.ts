@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -17,13 +18,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DroplistComponent } from './components/droplist/droplist.component';
-import { HomeComponent } from './pages/home/home.component';
+import { InfoItemComponent } from './components/info-item/info-item.component';
 import { InfoNpcComponent } from './components/info-npc/info-npc.component';
+import { InfoSkillComponent } from './components/info-skill/info-skill.component';
+import { ListaNpcSkillComponent } from './components/lista-npc-skill/lista-npc-skill.component';
+import { HomeComponent } from './pages/home/home.component';
 import { ListaItemComponent } from './pages/lista-item/lista-item.component';
 import { ListaNpcComponent } from './pages/lista-npc/lista-npc.component';
 import { ListaSkillComponent } from './pages/lista-skill/lista-skill.component';
-import { InfoSkillComponent } from './components/info-skill/info-skill.component';
-import { ListaNpcSkillComponent } from './components/lista-npc-skill/lista-npc-skill.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { ListaNpcSkillComponent } from './components/lista-npc-skill/lista-npc-s
     ListaSkillComponent,
     InfoSkillComponent,
     ListaNpcSkillComponent,
+    InfoItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { ListaNpcSkillComponent } from './components/lista-npc-skill/lista-npc-s
     MatFormFieldModule,
     MatExpansionModule,
     MatTabsModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

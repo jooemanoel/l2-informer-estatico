@@ -1,0 +1,15 @@
+<div class="container-fluid p-3">
+  <mat-card>
+    <mat-card-content class="d-flex justify-content-between">
+      <mat-card-title>{{ item.name }}</mat-card-title>
+      <button mat-raised-button (click)="changePage('lista-item')">BACK</button>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="container-fluid px-3">
+  <mat-card>
+    <mat-card-content>
+      <app-droplist filtro="item"></app-droplist>
+    </mat-card-content>
+  </mat-card>
+</div>
